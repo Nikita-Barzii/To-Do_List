@@ -1,0 +1,221 @@
+#body-id{
+    background: rgba(196, 196, 196, 0.2);
+}
+
+#to-do-list{
+    /* To-Do List */
+    position: absolute;
+    width: 229px;
+    height: 53px;
+    left: 20%;
+    top: 65px;
+
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 45px;
+    line-height: 53px;
+    /* identical to box height */
+    color: #000000;
+}
+
+#to-do-list-div{
+    position: absolute;
+    left: 20%;
+    top: 152px;
+}
+
+#text-field-top-box{
+    position: relative;
+    width: 924px;
+    height: 52px;
+}
+
+#input-task{
+    /* Text_Field_Top */
+    position: relative;
+    padding-left: 1%;
+    width: 782px;
+    height: 50px;
+    border-bottom: 2px solid #5E78EB;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 5px 0 0 0;
+    background: #FFFFFF;
+    float: left;
+    outline: none;
+    font-size: 17px;
+}
+
+#add-task-button{
+    /* Text Field Button */
+    position: relative;
+    float: right;
+    width: 130px;
+    height: 54px;
+    background: #5E78EB;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+}
+
+#button_arrow{
+    position: relative;
+    width: 17px;
+    height: 15px;
+    background-image: url("https://c.radikal.ru/c27/2108/fc/d8a04f60d08d.png");
+    left: 43%;
+    top: 2%;
+}
+
+.task-list-container{
+    position: relative;
+    display: flex;
+    width: 922px;
+    height: 202px;
+    border: 1px solid rgba(49, 41, 62, 0.05);
+    align-items: flex-start;
+    flex-direction: column;
+    list-style-type: none;
+    border-radius: 5px;
+    margin-top: 2.1%;
+    padding: 0;
+}
+
+ul li{
+    position: relative;
+    width: 99%;
+    height: 46px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    margin-top: 1%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    min-height: 46px;
+
+}
+
+.task{
+    position: relative;
+    top: 27%;
+    left: 3%;
+    font-family: 'Bitter', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+
+}
+
+.delete-btn{
+    position: relative;
+    float: left;
+    height: 100%;
+    width: 35px;
+    background: rgba(10, 2, 36, 0.1);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border: none;
+}
+
+.delete-x{
+    position: relative;
+    width: 15px;
+    height: 15px;
+    top: 0;
+    left: 23%;
+    background-image: url("https://c.radikal.ru/c31/2108/1b/17aaa078093d.png");
+}
+
+.task-checkbox{
+    position: relative;
+    float: right;
+    right: 5.3%;
+    top: 27%;
+
+}
+.toggle>input{
+    z-index: 1;
+    opacity: 0;
+    user-select: none;
+}
+
+.toggle>span::before{
+    content: '';
+    background-image: url("https://b.radikal.ru/b43/2108/31/b3381a01b230.png");
+    width: 20px;
+    height: 20px;
+    position: relative;
+    float: right;
+    right: 3%;
+    top: 30%;
+    user-select: none;
+}
+
+.toggle>input[type=checkbox]:checked+span::before{
+    background-image: url("https://b.radikal.ru/b27/2108/6b/4ebf341d4efc.png");
+}
+
+ul li:hover{
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.03));
+}
+
+.task-list.checked::before{
+    opacity: 1;
+    content: '';
+    transition: all 0.3s ease-out;
+
+}
+
+.task-list.checked{
+    opacity: 0.3;
+    text-decoration: line-through;
+    transition: all 0.3s ease-out;
+}
+
+#add-task-button:hover{
+    background: #6060eb;
+}
+
+.delete-btn:hover{
+    background: #d8d6db;
+}
+
+.task.checked::before{
+    opacity: 1;
+    content: '';
+    transition: all 0.3s ease-out;
+}
+
+.task.checked{
+    opacity: 0.3;
+    text-decoration: line-through;
+    transition: all 0.3s ease-out;
+}
+
+.clear-all-tasks-container{
+    margin-top: 1%;
+    text-align: center;
+    padding: 1%;
+    border: none;
+}
+
+#clear-button{
+    font-size: 14px;
+    color: #FF2851;
+    border-radius: 5px;
+    border: 1px solid #FF2851;
+    width: 15%;
+    height: 30px;
+    background: #F3F3F3;
+    transition: all 0.1s ease-out;
+}
+
+#clear-button:hover{
+    color: #F3F3F3;
+    background: #FF2851;
+    transition: all 0.1s ease-out;
+
+}
