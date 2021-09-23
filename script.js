@@ -3,19 +3,19 @@ let taskListElement;
 let inputButton;
 let inputField;
 let clearTasksButton;
-let taskid = 0;
+let taskid;
 let i;
 let tasks;
 let checkBoxState;
 let taskListMemory;
 let idCounter = 0;
 
-
 // starts the script
 init();
 
 function init(){
 
+    taskid = 0;
     console.log("initializing buttons");
     taskListElement = document.querySelector("#task-list");
 
@@ -223,11 +223,11 @@ function updateMemory(id, taskCheckboxState) {
     for (let taskElement of taskListMemory)  {
         if (taskElement.id === id) {
             taskElement.taskCheckBoxState = taskCheckboxState;
-            console.log("taskElement.taskCheckBoxState = " + taskCheckboxState);
+            console.log("taskElement.taskCheckBoxState = " + taskElement.taskCheckboxState);
         }
     }
     console.log("Memory updated!");
-    console.log(id, taskCheckboxState);
+    //console.log(id, taskCheckboxState);
 
     localStorage.setItem("tasks", JSON.stringify(taskListMemory));
 
@@ -235,9 +235,16 @@ function updateMemory(id, taskCheckboxState) {
 
 function loadFromMemory() {
 
+
     console.log("Loading tasks from memory");
 
     for (let item of taskListMemory) {
+        
+            if (item.id > taskid) {
+                
+                taskid = item.id;
+        }
+
         taskCompositing(item.id, item.taskText, item.taskCheckboxState);
 
         console.log("Tasks composed");
@@ -277,5 +284,4 @@ function clearTaskList() {
 
 
 }
-
 
