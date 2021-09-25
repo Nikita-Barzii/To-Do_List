@@ -80,77 +80,85 @@ function deleteTask(event){
 
 function taskCompositing(id, taskText, taskCheckboxState) {
 
-        console.log("Task compositing initiated");
-        //making container for task item elements
-        let li = document.createElement("li");
-        li.setAttribute("class", "task-list");
-        li.setAttribute("id", taskid);
+    console.log("Task compositing initiated");
+    //making container for task item elements
+    let li = document.createElement("li");
+    li.setAttribute("class", "task-list");
+    li.setAttribute("id", taskid);
 
-        console.log(li.className + " created");
+    console.log(li.className + " created");
 
-        //making checkbox
-        let labeltoggle = document.createElement('label');
-        labeltoggle.setAttribute("class", "toggle");
+    //making checkbox
+    let labeltoggle = document.createElement('label');
+    labeltoggle.setAttribute("class", "toggle");
 
-        let labelinput = document.createElement('input');
-        labelinput.setAttribute("type", "checkbox");
-        labelinput.setAttribute("class", "task-checkbox");
-        checkBoxState = labelinput.checked;
+    let labelinput = document.createElement('input');
+    labelinput.setAttribute("type", "checkbox");
+    labelinput.setAttribute("class", "task-checkbox");
+    checkBoxState = labelinput.checked;
 
-        console.log(checkBoxState);
+    console.log(checkBoxState);
 
-        let labelspan = document.createElement('span');
-        labelspan.setAttribute("class", "button-checkbox");
+    let labelspan = document.createElement('span');
+    labelspan.setAttribute("class", "button-checkbox");
 
-        //adding toggle style change listener
-        labelinput.addEventListener("click", toggleDone);
+    //adding toggle style change listener
+    labelinput.addEventListener("click", toggleDone);
 
-        //adding parent property to reach parent element and text
-        labelinput.parent = labeltoggle;
-        labelspan.parent = labeltoggle;
+    //adding parent property to reach parent element and text
+    labelinput.parent = labeltoggle;
+    labelspan.parent = labeltoggle;
 
-        console.log(labelinput.className + " created");
+    console.log(labelinput.className + " created");
 
-        //making task text (span)
-        let taskItemElement = document.createElement("span");
-        taskItemElement.setAttribute("class", "task");
-        taskItemElement.innerText = taskText;
+    //making task text (span)
+    let taskItemElement = document.createElement("span");
+    taskItemElement.setAttribute("class", "task");
+    taskItemElement.innerText = taskText;
 
-        console.log(taskItemElement.className + " created");
+    console.log(taskItemElement.className + " created");
 
-        //making delete button
-        let deletebutton = document.createElement('button');
-        deletebutton.setAttribute("class", "delete-btn");
+    //making delete button
+    let deletebutton = document.createElement('button');
+    deletebutton.setAttribute("class", "delete-btn");
 
-        let deletebuttondiv = document.createElement('div');
-        deletebuttondiv.setAttribute("class", "delete-x");
+    let deletebuttondiv = document.createElement('div');
+    deletebuttondiv.setAttribute("class", "delete-x");
 
-        //parent property is created and used to delete the element
-        //parent is not included into the Element or Node by default
-        deletebutton.parent = li;
-        deletebuttondiv.parent = li;
+    //parent property is created and used to delete the element
+    //parent is not included into the Element or Node by default
+    deletebutton.parent = li;
+    deletebuttondiv.parent = li;
 
-        //adding listener to the delete button
-        deletebutton.addEventListener("click", deleteTask);
+    //adding listener to the delete button
+    deletebutton.addEventListener("click", deleteTask);
 
-        console.log(deletebutton.className + " created");
+    console.log(deletebutton.className + " created");
 
-        //add all elements of the task list item to the task item container
-        li.appendChild(taskItemElement);
-        li.appendChild(deletebutton);
-        deletebutton.appendChild(deletebuttondiv);
+    //add all elements of the task list item to the task item container
+    li.appendChild(taskItemElement);
+    li.appendChild(deletebutton);
+    deletebutton.appendChild(deletebuttondiv);
 
-        li.appendChild(labeltoggle);
-        labeltoggle.appendChild(labelinput);
-        labeltoggle.appendChild(labelspan);
+    li.appendChild(labeltoggle);
+    labeltoggle.appendChild(labelinput);
+    labeltoggle.appendChild(labelspan);
 
-        //adding li to the task list
-        taskListElement.appendChild(li);
+    //adding li to the task list
+    taskListElement.appendChild(li);
 
-        console.log("Added task " + "\"" + taskText + "\"");
+    console.log("Added task " + "\"" + taskText + "\"");
 
-        taskCheckboxState = checkBoxState;
-       // console.log(id, taskText, taskCheckboxState);
+    //taskCheckboxState = checkBoxState;
+    // console.log(id, taskText, taskCheckboxState);
+
+    console.log(taskCheckboxState);
+
+    if (taskCheckboxState === true) {
+          taskItemElement.classList.add("checked");
+    }else if (taskCheckboxState === false) {
+          taskItemElement.classList.remove("checked");
+    }
 }
 
 function addTask(){
@@ -200,7 +208,7 @@ function toggleDone(event){
         taskCheckboxState = false;
         console.log(id);
         updateMemory(id, taskCheckboxState);
-        console.log(id, taskCheckboxState);
+        //console.log(id, taskCheckboxState);
     }
 
 }
@@ -263,7 +271,7 @@ function loadFromMemory() {
 
                 taskid = item.id;
         }
-
+        console.log(item.taskCheckboxState);
         taskCompositing(item.id, item.taskText, item.taskCheckboxState);
 
         console.log("Tasks composed");
