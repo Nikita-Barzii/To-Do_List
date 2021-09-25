@@ -64,7 +64,7 @@
     position: relative;
     width: 17px;
     height: 15px;
-    background-image: url("https://files.dp.ua/ru/i/660bc121513a9d5442e97c5cef85786e/635310ce79b233a1408aa6c9af1db997");
+    background-image: url("https://files.dp.ua/ru/i/79d60d2defe0e8a228ed1fd7fab86e23/635310ce79b233a1408aa6c9af1db997");
     left: 43%;
     top: 2%;
 }
@@ -126,7 +126,7 @@ ul li{
     height: 15px;
     top: 0;
     left: 23%;
-    background-image: url("https://files.dp.ua/ru/i/660bc121513a9d5442e97c5cef85786e/6e81a053d831eaf55b27099adce123c0");
+    background-image: url("https://files.dp.ua/ru/i/79d60d2defe0e8a228ed1fd7fab86e23/6e81a053d831eaf55b27099adce123c0");
 }
 
 .task-checkbox{
@@ -144,7 +144,7 @@ ul li{
 
 .toggle>span::before{
     content: '';
-    background-image: url("https://files.dp.ua/ru/i/660bc121513a9d5442e97c5cef85786e/aecbcb54f5e873fab28f57ad22641cff");
+    background-image: url("https://files.dp.ua/ru/i/79d60d2defe0e8a228ed1fd7fab86e23/aecbcb54f5e873fab28f57ad22641cff");
     width: 20px;
     height: 20px;
     position: relative;
@@ -155,7 +155,7 @@ ul li{
 }
 
 .toggle>input[type=checkbox]:checked+span::before{
-    background-image: url("https://files.dp.ua/ru/i/660bc121513a9d5442e97c5cef85786e/0d4f7a2c6f03f16b98b08028c0fbbaa3");
+    background-image: url("https://files.dp.ua/ru/i/79d60d2defe0e8a228ed1fd7fab86e23/0d4f7a2c6f03f16b98b08028c0fbbaa3");
 }
 
 ul li:hover{
@@ -230,4 +230,3 @@ ul li:hover{
     font-size: 14px;
     transition: all 0.1s ease-out;
 }
-
