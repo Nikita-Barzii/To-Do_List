@@ -64,7 +64,7 @@
     position: relative;
     width: 17px;
     height: 15px;
-    background-image: url("https://files.dp.ua/ru/i/f35f71b69154572b602a36ded3d5e04b/635310ce79b233a1408aa6c9af1db997");
+    background-image: url("Button_Arrow.png");
     left: 43%;
     top: 2%;
 }
@@ -126,7 +126,7 @@ ul li{
     height: 15px;
     top: 0;
     left: 23%;
-    background-image: url("https://files.dp.ua/ru/i/f35f71b69154572b602a36ded3d5e04b/6e81a053d831eaf55b27099adce123c0");
+    background-image: url("Delete_X.png");
 }
 
 .task-checkbox{
@@ -144,7 +144,7 @@ ul li{
 
 .toggle>span::before{
     content: '';
-    background-image: url("https://files.dp.ua/ru/i/f35f71b69154572b602a36ded3d5e04b/aecbcb54f5e873fab28f57ad22641cff");
+    background-image: url("List_Empty.png");
     width: 20px;
     height: 20px;
     position: relative;
@@ -155,7 +155,7 @@ ul li{
 }
 
 .toggle>input[type=checkbox]:checked+span::before{
-    background-image: url("https://files.dp.ua/ru/i/f35f71b69154572b602a36ded3d5e04b/0d4f7a2c6f03f16b98b08028c0fbbaa3");
+    background-image: url("List_Tick.png");
 }
 
 ul li:hover{
