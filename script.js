@@ -38,7 +38,6 @@ function init(){
         }
     });
 
-
     //adding listener to add button
     inputButton.addEventListener("click", addTask);
     clearTasksButton.addEventListener('click', clearTaskList);
@@ -79,9 +78,9 @@ function taskCompositing(id, taskText, taskCheckboxState) {
     let labelinput = document.createElement('input');
     labelinput.setAttribute("type", "checkbox");
     labelinput.setAttribute("class", "task-checkbox");
-    //labelinput.checked = taskCheckboxState;
+    labelinput.checked = taskCheckboxState;
 
-    console.log(taskCheckboxState);
+    console.log(checkBoxState);
 
     let labelspan = document.createElement('span');
     labelspan.setAttribute("class", "button-checkbox");
@@ -144,29 +143,25 @@ function taskCompositing(id, taskText, taskCheckboxState) {
     let PlaceholderTask = JSON.parse(localStorage.getItem("tasks")) || [];
     console.log(PlaceholderTask);
 
-    let taskCheckboxStateCheck = taskCheckboxState;
-    taskCheckboxStateCheck = Boolean(taskCheckboxStateCheck);
-    console.log(typeof taskCheckboxStateCheck);
+    taskCheckboxState = Boolean(taskCheckboxState);
+    console.log(typeof taskCheckboxState);
 
+    for (let taskElement of PlaceholderTask){
 
-    for (let taskElement of taskListMemory){
-        //taskElement.taskCheckboxState = true;
-
-        taskElement.taskCheckboxState = taskCheckboxState;
-        console.log(taskElement.taskCheckboxState);
-
+        //labelinput.checked = taskElement.taskCheckboxState;
         console.log(taskElement);
         taskElement.taskCheckboxState = Boolean(taskElement.taskCheckboxState);
         console.log(typeof taskElement.taskCheckboxState);
+        console.log(taskElement.taskCheckboxState);
 
         if (taskElement.taskCheckboxState === true) {
-
             labelinput.click();
             //taskItemElement.classList.add("checked");
             console.log(".checked added to taskItemElement");
             console.log(taskElement.taskCheckboxState);
         }
     }
+    console.log(taskItemElement);
 }
 
 function addTask(){
@@ -204,13 +199,17 @@ function toggleDone(event){
 
     id = event.target.parentNode.parentNode.id;
 
+    let taskElementCheckboxCheckedBefore = event.target.checked;
+    let taskElementCheckboxCheckedAfter;
+
     if (event.target.checked) {
         textItem.classList.add("checked");
         //idTask =
         console.log("Checked added");
         taskCheckboxState = true;
         console.log(id);
-        updateMemory(id, taskCheckboxState);
+        taskElementCheckboxCheckedAfter = taskElementCheckboxCheckedBefore;
+        updateMemory(id, taskCheckboxState, taskElementCheckboxCheckedAfter);
         console.log(id, taskCheckboxState);
     } else {
         textItem.classList.remove("checked");
@@ -218,7 +217,8 @@ function toggleDone(event){
         console.log("Checked removed");
         taskCheckboxState = false;
         console.log(id);
-        updateMemory(id, taskCheckboxState);
+        taskElementCheckboxCheckedAfter = taskElementCheckboxCheckedBefore;
+        updateMemory(id, taskCheckboxState, taskElementCheckboxCheckedAfter);
         //console.log(id, taskCheckboxState);
     }
 
@@ -239,18 +239,21 @@ function addToMemory(id, taskText, taskCheckboxState) {
     console.log("Local storage updated")
 }
 
-function updateMemory(id, taskCheckboxState) {
+function updateMemory(id, taskCheckboxState, taskElementCheckboxCheckedAfter) {
 
     //let idnumber = parseInt(id, 10);
 
-    console.log(taskCheckboxState);
     id = parseInt(id, 10);
 
     for (let taskElement of taskListMemory)  {
-        console.log("Element id = " + id);
-        
-        taskElement.taskCheckBoxState = taskCheckboxState;
 
+        taskElement.taskCheckboxState = taskElementCheckboxCheckedAfter;
+        console.log(taskElementCheckboxCheckedAfter);
+        console.log(taskElement);
+        console.log("Element id = " + id);
+        //console.log("taskElement.id String (225) = " + taskElement.id);
+
+        //console.log("taskElement.taskCheckBoxState = " + taskElement.taskCheckBoxState);
         console.log("taskCheckboxState = " + taskCheckboxState);
 
         console.log(typeof taskElement.id);
@@ -258,11 +261,15 @@ function updateMemory(id, taskCheckboxState) {
         //console.log(typeof idnumber);
 
         if (taskElement.id === id) {
+
             console.log("taskElement.id String (225) = " + taskElement.id);
+            taskElement.taskCheckBoxState = taskCheckboxState;
+            console.log("taskElement.taskCheckBoxState = " + taskElement.taskCheckboxState);
+
         }
     }
     console.log("Memory updated!");
-    console.log(id, taskCheckboxState);
+    //console.log(id, taskCheckboxState);
     localStorage.setItem("tasks", JSON.stringify(taskListMemory));
 
 
@@ -275,7 +282,6 @@ function loadFromMemory() {
     console.log(taskListMemory);
 
     for (let taskElement of taskListMemory) {
-
         console.log(taskElement);
 
         if (taskElement.id > taskid) {
@@ -284,7 +290,7 @@ function loadFromMemory() {
         }
 
         console.log(taskElement.taskCheckboxState);
-        taskCompositing(taskElement.id, taskElement.taskText); //
+        taskCompositing(taskElement.id, taskElement.taskText); //taskElement.taskCheckboxState
 
         console.log("Tasks composed");
     }
